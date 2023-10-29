@@ -41,3 +41,25 @@ router.get('/post/:id', async (req, res) => {
     }
 });
 
+// GET login route. if successful, redirect to homepage. Otherwise, render login page.
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+
+    res.render('login');
+});
+
+// GET signup route for user if they want to signup. If already logged in, redirect to homepage.
+router.get('/signup', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+    res.render('signup');
+});
+
+module.exports = router;
+
+
