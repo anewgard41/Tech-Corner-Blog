@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Corner Blog</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                {{!-- link to the homepage --}}
+                <li><a href="/">Home</a></li>
+                {{!-- If user is successfully logged in, the below navigation links will display --}}
+                {{#if logged_in}}
+                <li><a href="/dashboard">About</a></li>
+                <li><a href="#" class="btn" id="logout">Logout</a></li>
+                {{else}}
+                <li><a href="/login">Login</a></li>
+                {{/if}}
+            </ul>
+        </nav>
+
+        <h1>Tech Corner Blog</h1>
+
+    </header>
+
+    <main>
+        {{{body}}}
+    </main>
+
+    <footer>
+        <p>&copy; 2020 Tech Corner Blog</p>
+    </footer>
+
+</body>
+
+</html>
+
+
+<script src="/js/logout.js"></script>
