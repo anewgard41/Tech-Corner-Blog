@@ -6,6 +6,7 @@ const withAuth = require('../util/auth.js');
 // GET all posts for dashboard. req.session.user_id is used to find all posts by the logged in user.
 router.get('/', withAuth, async (req, res) => {
     try {
+        
         const postData = await Post.findAll({
             where: {
                 user_id: req.session.user_id,
@@ -16,7 +17,8 @@ router.get('/', withAuth, async (req, res) => {
 
         res.render('all-posts-admin', {
             layout: 'dashboard',
-            posts
+            posts,
+            loggedIn: true
         });
     } catch (err) {
         res.redirect('login');
@@ -26,7 +28,8 @@ router.get('/', withAuth, async (req, res) => {
 // GET /new route, which renders the new-post page.
 router.get('/new', withAuth, (req, res) => {
     res.render('new-post', {
-        layout: 'dashboard'
+        layout: 'dashboard',
+        loggedIn: true
     });
 });
 
@@ -41,6 +44,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
             res.render('edit-post', {
                 layout: 'dashboard',
                 post,
+                loggedIn: true
             });
         } else {
             res.status(404).end();

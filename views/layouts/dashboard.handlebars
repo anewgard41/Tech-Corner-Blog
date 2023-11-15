@@ -15,8 +15,8 @@
                 {{!-- link to the homepage --}}
                 <li><a href="/">Home</a></li>
                 {{!-- If user is successfully logged in, the below navigation links will display --}}
-                {{#if logged_in}}
-                <li><a href="/dashboard">About</a></li>
+                {{#if loggedIn}}
+                <li><a href="/dashboard">Dashboard</a></li>
                 <li><a href="#" class="btn" id="logout">Logout</a></li>
                 {{else}}
                 <li><a href="/login">Login</a></li>
@@ -31,6 +31,10 @@
     <main>
         {{{body}}}
     </main>
+
+    <div>
+        <a href="/dashboard/new">Create New Post</a>
+    </div>
 
     <footer>
         <p>&copy; 2020 Tech Corner Blog</p>

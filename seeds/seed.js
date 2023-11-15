@@ -1,29 +1,32 @@
 const sequelize = require('../config/connection');
-const { User, Post } = require('../models');
-
-const userData = require('./user-data.json');
-const postData = require('./post-data.json');
+const { User, Post, Comment } = require('../models'); // Adjust the path as needed
 
 const seedDatabase = async () => {
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ force: true }); // This will drop existing tables and recreate them
 
-    
-  const users = await User.bulkCreate(userData, {
-    // This is to make sure the passwords are hashed.
-    individualHooks: true,
-    returning: true,
-  });
+    // Create users
+    const users = await User.bulkCreate([
+        { username: 'user1', password: 'password1' },
+        { username: 'user2', password: 'password2' },
+        // Add more users as needed
+    ], { individualHooks: true });
 
-  // Loops through the postData array and creates a new post for each entry.
-  for (const post of postData) {
-    await Post.create({
-      ...post,
-      // Randomly assigns a user_id from the users array to each post.
-      user_id: users[Math.floor(Math.random() * users.length)].id,
-    });
-  }
+    // Create posts
+    const posts = await Post.bulkCreate([
+        { title: 'Technology is Cool', body: 'This is the body of Post 1', user_id: users[0].id },
+        { title: 'Post 2', body: 'This is the body of Post 2', user_id: users[1].id },
+        // Add more posts as needed
+    ]);
 
-  process.exit(0);
+    // Create comments
+    const comments = await Comment.bulkCreate([
+        { body: 'Comment 1', user_id: users[0].id, post_id: posts[0].id },
+        { body: 'Comment 2', user_id: users[1].id, post_id: posts[1].id },
+        // Add more comments as needed
+    ]);
+
+    console.log('Database seeded successfully');
+    process.exit(0);
 };
 
 seedDatabase();

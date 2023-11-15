@@ -18,12 +18,12 @@
     {{/each}}
     {{/if}}
 
-    <form action="/comment/{{post.id}}" method="POST">
+    <form class="comment-form" action="/comment/{{post.id}}" method="POST">
         <textarea name="body">Comment:</textarea>
         <button type="submit">Add Comment</button>
     </form>
 
 </div>
 
-<script src="/public/js/comment.js"></script>
+<script src="/js/comment.js"></script>
 

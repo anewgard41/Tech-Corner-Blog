@@ -7,7 +7,7 @@ const commentFormHandler = async (event) => {
     const body = document.querySelector('#comment-body').value.trim();
 
     if (body) {
-        const response = await fetch('/api/comments', {
+        const response = await fetch('/api/comment', {
             method: 'POST',
             body: JSON.stringify({ post_id, body }),
             headers: { 'Content-Type': 'application/json' },
@@ -21,30 +21,9 @@ const commentFormHandler = async (event) => {
     }
 }
 
-document
-    .querySelector('.comment-form')
-    .addEventListener('submit', commentFormHandler);
+document.addEventListener('DOMContentLoaded', () => {
+    document
+        .querySelector('.comment-form')
+        .addEventListener('submit', commentFormHandler);
+});
 
-// grabs values for comment id, fetches request to api/comments, and deletes the comment.
-
-const deleteCommentHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-        const id = event.target.getAttribute('data-id');
-
-        const response = await fetch(`/api/comments/${id}`, {
-            method: 'DELETE',
-        });
-
-        if (response.ok) {
-            document.location.reload();
-        } else {
-            alert('Failed to delete comment');
-        }
-    }
-};
-
-document
-    .querySelector('.comment-list')
-    .addEventListener('click', deleteCommentHandler);
-
-    

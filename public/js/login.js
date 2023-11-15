@@ -7,14 +7,14 @@ const loginFormHandler = async (event) => {
 
     // Send a POST request to the API endpoint. If successful, redirect to the homepage. Otherwise, display the error.
     if (username && password) {
-        const response = await fetch('/api/users/login', {
+        const response = await fetch('/api/user/login', {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: { 'Content-Type': 'application/json' },
         });
 
         if (response.ok) {
-            document.location.replace('/');
+            document.location.replace('/dashboard');
         } else {
             alert(response.statusText);
         }
@@ -24,5 +24,4 @@ const loginFormHandler = async (event) => {
 document 
     .querySelector('.login-form')
     .addEventListener('submit', loginFormHandler);
-
-    // dev note: be sure to add login-form class when creating the login.handlebars file.
+ 
