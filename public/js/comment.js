@@ -3,7 +3,6 @@ const post_id = document.querySelector('input[name="post-id"]').value.trim();
 
 // Define an asynchronous function called 'commentFormHandler' to handle the submission of a new comment.
 const commentFormHandler = async (event) => {
-  debugger;
   // Prevent the default form submission behavior to handle it with JavaScript.
   event.preventDefault();
 

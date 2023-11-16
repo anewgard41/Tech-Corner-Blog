@@ -2,7 +2,6 @@
 const postId = document.querySelector('input[name="post-id"]').value.trim();
 
 const editFormHandler = async function (event) {
-    debugger
     console.log('Form submitted')
     event.preventDefault();
 

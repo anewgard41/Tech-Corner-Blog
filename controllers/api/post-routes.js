@@ -4,7 +4,6 @@ const withAuth = require('../../util/auth.js');
 
 // Post route to create a new post. The user_id is taken from the session.
 router.post('/', withAuth, async (req, res) => {
-    debugger;
     try {
         const newPost = await Post.create({
             ...req.body,

@@ -1,23 +1,8 @@
 const router = require('express').Router();
-const { Post, Comment } = require('../../models');
+const { Comment } = require('../../models');
 const withAuth = require('../../util/auth.js');
 
-// Post route to create a new comment. The user_id is taken from the session.
-// router.post('/', withAuth, async (req, res) => {
-//     try {
-//         const newComment = await Comment.create({
-//             ...req.body,
-//             user_id: req.session.user_id,
-//         });
-
-//         res.status(200).json(newComment);
-//     } catch (err) {
-//         res.status(400).json(err);
-//     }
-// });
-
 router.post('/:post_id', withAuth, async (req, res) => {
-    debugger;
     try {
         const { content } = req.body;
         const { user_id } = req.session;
