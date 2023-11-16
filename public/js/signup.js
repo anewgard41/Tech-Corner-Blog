@@ -9,7 +9,7 @@ const signupFormHandler = async (event) => {
   
     if (username && password) {
       // Send a POST request to the '/api/users' endpoint with the new user's data.
-      const response = await fetch('/api/users', {
+      const response = await fetch('/api/user', {
         method: 'POST',
         body: JSON.stringify({
           username,
@@ -21,7 +21,7 @@ const signupFormHandler = async (event) => {
       // Check if the response from the server is successful (HTTP status code 200).
       if (response.ok) {
         // If the user signup is successful, redirect the browser to the user's experiences page.
-        document.location.replace('/experiences');
+        document.location.replace('/dashboard');
       } else {
         // If there's an error in user signup, show an alert with the error message.
         alert(response.statusText);
