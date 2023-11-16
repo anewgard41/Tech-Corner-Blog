@@ -1,0 +1,142 @@
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1e1e1e; /* Dark background color */
+    color: #fff; /* Light text color */
+}
+
+header {
+    background-color: #333; /* Dark header background color */
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff; /* Light text color for navigation links */
+}
+
+h1 {
+    color: #61dafb; /* Blue color for the title */
+}
+
+main {
+    padding: 20px;
+}
+
+.posts {
+    margin-top: 20px;
+}
+
+.post {
+    background-color: #333; /* Dark background color for posts */
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.post h2 a {
+    color: #61dafb; /* Blue color for post titles */
+}
+
+.edit-post-form, .new-post-form {
+    margin-top: 20px;
+}
+
+.edit-post-form label, .new-post-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.edit-post-form input, .edit-post-form textarea,
+.new-post-form input, .new-post-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.edit-post-form button, .new-post-form button {
+    background-color: #61dafb; /* Blue button color */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background-color: #d9534f; /* Red color for delete button */
+}
+
+.login-form, .signup-form {
+    margin-top: 20px;
+}
+
+.login-form input, .signup-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.login-form button, .signup-form button {
+    background-color: #61dafb; /* Blue button color */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.signup-form a {
+    color: #61dafb; /* Blue color for signup link */
+}
+
+.post-title {
+    color: #61dafb; /* Blue color for post titles */
+}
+
+.comment {
+    background-color: #333; /* Dark background color for comments */
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.comment p {
+    color: #fff;
+}
+
+.new-comment-form {
+    margin-top: 20px;
+}
+
+.new-comment-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.new-comment-form button {
+    background-color: #61dafb; /* Blue button color for comment form */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.footer {
+    background-color: #333; /* Dark background color for footer */
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

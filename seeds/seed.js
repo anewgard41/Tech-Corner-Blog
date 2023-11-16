@@ -6,20 +6,20 @@ const seedDatabase = async () => {
 
     // Create users
     const users = await User.bulkCreate([
-        { username: 'user1', password: 'password1' },
-        { username: 'user2', password: 'password2' },
+        { username: 'Josh', password: 'password1' },
+        { username: 'Diane', password: 'password2' },
     ], { individualHooks: true });
 
     // Create posts
     const posts = await Post.bulkCreate([
-        { title: 'Post 1', content: 'This is the content of Post 1', user_id: users[0].id },
-        { title: 'Post 2', content: 'This is the content of Post 2', user_id: users[1].id },
+        { title: 'New playstation portal released!', content: 'Nintendo Switch watch out!', user_id: users[0].id },
+        { title: 'Clojure is a unique programming language', content: 'Highly functional', user_id: users[1].id },
     ]);
 
     // Create comments
     const comments = await Comment.bulkCreate([
         { content: 'The JS covention was crazy.', user_id: users[0].id, post_id: posts[0].id },
-        { content: 'I love computer.', user_id: users[1].id, post_id: posts[1].id },
+        { content: 'I love computers.', user_id: users[1].id, post_id: posts[1].id },
         
     ]);
 
