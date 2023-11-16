@@ -1,30 +1,34 @@
 // Initiated by clicking the edit button on a post
-const postId = document.querySelector('input[name="post-id"]').value;
+const postId = document.querySelector('input[name="post-id"]').value.trim();
 
-const editFormHandler = async function(event) {
+const editFormHandler = async function (event) {
+    debugger
+    console.log('Form submitted')
     event.preventDefault();
 
     const title = document.querySelector('input[name="post-title"]').value;
-    const body = document.querySelector('textarea[name="post-body"]').value;
+    const content = document.querySelector('textarea[name="post-content"]').value;
 
-    await fetch(`/api/post/${postId}`, {
+    await fetch(`/api/post/${postId}`, { 
         method: 'PUT',
         body: JSON.stringify({
             title,
-            body
+            content,
         }),
         headers: {
-            'Content-Type': 'application/json'
-        }
+            'Content-Type': 'application/json',
+        },
     });
 
     document.location.replace('/dashboard');
 };
 
+document.querySelector('#edit-post-form').addEventListener('submit', editFormHandler);
+
 // Initiated by clicking the delete button on a post
 
 const deleteClickHandler = async function() {
-    await fetch(`/api/posts/${postId}`, {
+    await fetch(`/api/post/${postId}`, {
         method: 'DELETE',
     });
 
@@ -32,30 +36,5 @@ const deleteClickHandler = async function() {
 };
 
 document
-    .querySelector('#edit-post-form')
-    .addEventListener('submit', editFormHandler);
-
-document
     .querySelector('#delete-btn')
     .addEventListener('click', deleteClickHandler);
-
-// Initiated by clicking the delete button on a comment
-
-const deleteCommentHandler = async function(event) {
-    if (event.target.hasAttribute('data-id')) {
-        const id = event.target.getAttribute('data-id');
-
-        await fetch(`/api/comments/${id}`, {
-            method: 'DELETE'
-        });
-
-        document.location.reload();
-    }
-}; 
-
-document
-    .querySelector('.comment-list')
-    .addEventListener('click', deleteCommentHandler);
-
-
-

@@ -1,5 +1,5 @@
 const sequelize = require('../config/connection');
-const { User, Post, Comment } = require('../models'); // Adjust the path as needed
+const { User, Post, Comment } = require('../models'); // Import all models
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true }); // This will drop existing tables and recreate them
@@ -8,21 +8,19 @@ const seedDatabase = async () => {
     const users = await User.bulkCreate([
         { username: 'user1', password: 'password1' },
         { username: 'user2', password: 'password2' },
-        // Add more users as needed
     ], { individualHooks: true });
 
     // Create posts
     const posts = await Post.bulkCreate([
-        { title: 'Technology is Cool', body: 'This is the body of Post 1', user_id: users[0].id },
-        { title: 'Post 2', body: 'This is the body of Post 2', user_id: users[1].id },
-        // Add more posts as needed
+        { title: 'Post 1', content: 'This is the content of Post 1', user_id: users[0].id },
+        { title: 'Post 2', content: 'This is the content of Post 2', user_id: users[1].id },
     ]);
 
     // Create comments
     const comments = await Comment.bulkCreate([
-        { body: 'Comment 1', user_id: users[0].id, post_id: posts[0].id },
-        { body: 'Comment 2', user_id: users[1].id, post_id: posts[1].id },
-        // Add more comments as needed
+        { content: 'The JS covention was crazy.', user_id: users[0].id, post_id: posts[0].id },
+        { content: 'I love computer.', user_id: users[1].id, post_id: posts[1].id },
+        
     ]);
 
     console.log('Database seeded successfully');

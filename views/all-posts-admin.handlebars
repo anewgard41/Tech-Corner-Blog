@@ -1,8 +1,16 @@
-<h1>Your Posts</h1>
-    <div>
+<div class="posts">
     {{#each posts}}
-    <a class="" href= "/dashboard/edit/{{id}}">
-    <span>{{title}}</span>
-    </a>
-    {{/each}}
+    <div class="post">
+        <h2>
+            <a href="/dashboard/edit/{{id}}">{{title}}</a>
+        </h2>
+        <div>
+            {{content}}
+        </div>
+        {{/each}}
+
+    </div>
+
+    <div>
+        <a href="/dashboard/new"><h3>Create New Post</h3></a>
     </div>

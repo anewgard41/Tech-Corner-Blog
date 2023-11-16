@@ -1,9 +1,10 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post, User } = require('../../models');
 const withAuth = require('../../util/auth.js');
 
 // Post route to create a new post. The user_id is taken from the session.
 router.post('/', withAuth, async (req, res) => {
+    debugger;
     try {
         const newPost = await Post.create({
             ...req.body,
@@ -22,9 +23,10 @@ router.put('/:id', withAuth, async (req, res) => {
         const postData = await Post.update(req.body, {
             where: {
                 id: req.params.id,
+                user_id: req.session.user_id,
             },
         });
-        // If no post is found with the given id, return an error message.
+        // If no post is found with the specified id, return an error message.
         if (!postData) {
             res.status(404).json({ message: 'No post found with this id!' });
             return;
@@ -35,6 +37,7 @@ router.put('/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
 
 // Delete route to delete a post by its id.
 router.delete('/:id', withAuth, async (req, res) => {
