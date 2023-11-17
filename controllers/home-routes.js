@@ -5,6 +5,7 @@ const { Post, User, Comment } = require('../models');
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
+            // Include the post's user and comment data
             include: [
                 {
                     model: User,
@@ -18,9 +19,10 @@ router.get('/', async (req, res) => {
                     },
                 },
             ],
+            // Order the posts from most recent to least
             order: [['date_created', 'DESC']],  
             });
-
+            // Serialize data so the template can read it
         const posts = postData.map((post) => post.get({ plain: true }));
 
         res.render('all-posts', { posts,

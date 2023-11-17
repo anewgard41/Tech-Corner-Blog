@@ -2,6 +2,7 @@ const User = require('./user');
 const Post = require('./post');
 const Comment = require('./comment');
 
+// Create associations
 User.hasMany(Post, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'

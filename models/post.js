@@ -3,6 +3,7 @@ const sequelize = require('../config/connection');
 
 class Post extends Model {}
 
+// create fields/columns for Post model. user id is a foreign key that references the primary key of the user model.
 Post.init(
     {
         id: {

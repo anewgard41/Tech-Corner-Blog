@@ -3,6 +3,7 @@ const sequelize = require('../config/connection');
 
 class Comment extends Model { }
 
+// create fields/columns for Comment model. Keeping it simple with just a content column. 
 Comment.init(
     {
         content: {
