@@ -5,13 +5,13 @@
             <a href="/post/{{id}}">{{title}}</a>
         </h2>
         <div>
+            {{content}}
+        </div>
+        <div>
             Posted by:
             {{User.username}}
             On:
             {{format_date date_created}}
-        </div>
-        <div>
-            {{content}}
         </div>
         {{/each}}
 
