@@ -53,7 +53,7 @@ User.init (
         sequelize,
         // don't automatically create createdAt/updatedAt timestamp fields
         timestamps: false,
-        freezeTableName: true,
+        freezeTableName: false,
         underscored: true,
         modelName: 'User'
     }   
